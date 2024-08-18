@@ -14,6 +14,7 @@ import spring_boot_proyek.tes_magang_api.service.LokasiService;
 
 @RestController
 @RequestMapping("/api/lokasi")
+@CrossOrigin(origins = "http://localhost")
 public class LokasiController {
 
     @Autowired
@@ -23,7 +24,7 @@ public class LokasiController {
     public ApiResponse<Page<Lokasi>> getAllLokasi(
             @RequestParam(value = "page", defaultValue = "0") int page) {
 
-        Pageable pageable = PageRequest.of(page, 10);
+        Pageable pageable = PageRequest.of(page, 20);
         Page<Lokasi> lokasiPage = lokasiService.getLokasi(pageable);
 
         ApiResponse.Pagination pagination = new ApiResponse.Pagination(

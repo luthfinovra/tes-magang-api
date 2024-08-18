@@ -15,6 +15,7 @@ import spring_boot_proyek.tes_magang_api.service.ProyekService;
 
 @RestController
 @RequestMapping("/api/proyek")
+@CrossOrigin(origins = "http://localhost")
 public class ProyekController {
 
     @Autowired
@@ -24,7 +25,7 @@ public class ProyekController {
     public ApiResponse<Page<Proyek>> findAllProyek(
             @RequestParam(value = "page", defaultValue = "0") int page) {
 
-        Pageable pageable = PageRequest.of(page, 10);
+        Pageable pageable = PageRequest.of(page, 20);
         Page<Proyek> proyekPage = proyekService.getProyek(pageable);
 
         ApiResponse.Pagination pagination = new ApiResponse.Pagination(
